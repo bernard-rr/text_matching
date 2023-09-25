@@ -1,4 +1,4 @@
-# Name Matching Streamlit App
+# Text Matching Streamlit App
 
 This Streamlit app allows users to upload two CSV files and perform name matching using a Sentence Transformer model. It then displays the matching results in a table and provides an option to download the results in CSV format.
 
