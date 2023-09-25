@@ -1,5 +1,5 @@
 import streamlit as st
-from helpers import process_uploaded_files, match_names, display_results, prepare_download
+from helpers import process_uploaded_files, match_names, prepare_download
 import pandas as pd
 
 def main():
