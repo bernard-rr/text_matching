@@ -1,5 +1,5 @@
 import csv
-import io  # Import the io module for StringIO
+import io
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
 
@@ -26,18 +26,17 @@ def process_uploaded_files(file1, file2):
     global embeddings1
     global names1
     
-    # Read the uploaded files into memory as text
     file1_text = io.TextIOWrapper(file1, encoding='utf-8')
     file2_text = io.TextIOWrapper(file2, encoding='utf-8')
     
     with file1_text as f1:
-        reader = csv.reader(f1, delimiter=',')  # Specify the delimiter if necessary
+        reader = csv.reader(f1, delimiter=',')
         file1_data = [(row[0], row[1]) for row in reader]
         names1 = [item[1] for item in file1_data]
         embeddings1 = model.encode(names1, convert_to_tensor=True)
     
     with file2_text as f2:
-        reader = csv.reader(f2, delimiter=',')  # Specify the delimiter if necessary
+        reader = csv.reader(f2, delimiter=',')
         file2_data = [row[0] for row in reader]
     
     return file1_data, file2_data
@@ -53,3 +52,8 @@ def match_names(file1_data, file2_data):
         matched_data.append([name, matched_code, best_match_name, similarity_score])
     
     return matched_data
+    
+def prepare_download(data):
+    df = pd.DataFrame(data, columns=['Name from File2', 'Matched Code', 'Matched Name from File1', 'Similarity Score'])
+    csv_data = df.to_csv(index=False)
+    return csv_data
