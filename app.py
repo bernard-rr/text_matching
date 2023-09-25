@@ -2,6 +2,10 @@ import streamlit as st
 from helpers import process_uploaded_files, match_names, prepare_download
 import pandas as pd
 
+def display_results(matched_data):
+    st.write("Matching results:")
+    st.table(matched_data)
+
 def main():
     st.title("Name Matching App")
     
