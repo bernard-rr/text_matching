@@ -1,4 +1,5 @@
 import csv
+import io  # Import the io module for StringIO
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
 
@@ -25,13 +26,17 @@ def process_uploaded_files(file1, file2):
     global embeddings1
     global names1
     
-    with file1 as f1:
+    # Read the uploaded files into memory as text
+    file1_text = io.TextIOWrapper(file1, encoding='utf-8')
+    file2_text = io.TextIOWrapper(file2, encoding='utf-8')
+    
+    with file1_text as f1:
         reader = csv.reader(f1, delimiter=',')  # Specify the delimiter if necessary
         file1_data = [(row[0], row[1]) for row in reader]
         names1 = [item[1] for item in file1_data]
         embeddings1 = model.encode(names1, convert_to_tensor=True)
     
-    with file2 as f2:
+    with file2_text as f2:
         reader = csv.reader(f2, delimiter=',')  # Specify the delimiter if necessary
         file2_data = [row[0] for row in reader]
     
