@@ -21,7 +21,8 @@ def main():
         download_button = st.download_button(
             label="Download Matching Results (CSV)",
             data=prepare_download(matched_data),
-            key="download_button"
+            key="download_button",
+            mime='text/csv'  # Specify the MIME type as CSV
         )
 
 if __name__ == "__main__":
