@@ -26,13 +26,13 @@ def process_uploaded_files(file1, file2):
     global names1
     
     with file1 as f1:
-        reader = csv.reader(f1)
+        reader = csv.reader(f1, delimiter=',')  # Specify the delimiter if necessary
         file1_data = [(row[0], row[1]) for row in reader]
         names1 = [item[1] for item in file1_data]
         embeddings1 = model.encode(names1, convert_to_tensor=True)
     
     with file2 as f2:
-        reader = csv.reader(f2)
+        reader = csv.reader(f2, delimiter=',')  # Specify the delimiter if necessary
         file2_data = [row[0] for row in reader]
     
     return file1_data, file2_data
