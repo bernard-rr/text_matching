@@ -1,6 +1,7 @@
 import csv
 import io
 import numpy as np
+import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
@@ -52,7 +53,7 @@ def match_names(file1_data, file2_data):
         matched_data.append([name, matched_code, best_match_name, similarity_score])
     
     return matched_data
-    
+
 def prepare_download(data):
     df = pd.DataFrame(data, columns=['Name from File2', 'Matched Code', 'Matched Name from File1', 'Similarity Score'])
     csv_data = df.to_csv(index=False)
