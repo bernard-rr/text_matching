@@ -55,11 +55,37 @@ To run this Streamlit app locally, you need the following prerequisites:
 
    The app will open in your default web browser.
 
-3. Upload two CSV files using the "Upload File 1 (CSV)" and "Upload File 2 (CSV)" buttons. Make sure both files contain a column with names you want to match.
+The Text Matching Streamlit App is designed to match names in the first uploaded CSV file to the row with the highest similarity score in the second uploaded CSV file. The app assumes the following data structure:
 
-4. The app will perform the name matching using a Sentence Transformer model and display the matching results in a table.
+- **File 1 (CSV)**: This file should contain a maximum of two columns. Typically, the first column is used to store unique codes or identifiers, and the second column contains names you want to match.
 
-5. To download the matching results in CSV format, click the "Download Matching Results (CSV)" button.
+- **File 2 (CSV)**: This file should contain a maximum of one column. It usually contains names that you want to match against those in the first file.
+
+Here's how the app works:
+
+1. **Upload CSV Files**:
+   - Use the "Upload File 1 (CSV)" button to upload the first CSV file. Ensure that it adheres to the specified structure.
+   - Use the "Upload File 2 (CSV)" button to upload the second CSV file with the names you want to match.
+
+1. **Name Matching**:
+   - The app processes the uploaded files and computes similarity scores between the names in the second file and those in the first file using a Sentence Transformer model.
+   - For each name in the second file, the app identifies the best match from the first file based on the highest similarity score.
+   - It also calculates and displays the similarity score for each match.
+
+1. **Matching Results Display**:
+   - The app displays the matching results in a table format, showing the following columns:
+     - "Name from File 2": The name from the second uploaded file.
+     - "Matched Code": The code or identifier corresponding to the best match from the first file.
+     - "Matched Name from File 1": The name from the first file that has the highest similarity score with the name from the second file.
+     - "Similarity Score": The similarity score between the names, indicating the degree of similarity.
+
+1. **Download Matching Results (CSV)**:
+   - Users can download the matching results in CSV format by clicking the "Download Matching Results (CSV)" button. The downloaded CSV file contains the same information as displayed in the table.
+
+By following these steps, users can efficiently match names and obtain detailed matching results for further analysis or reference.
+
+**Note**: For more accurate results, it is recommended to provide column headers in the uploaded CSV files.
+
 
 ## Contributing
 
