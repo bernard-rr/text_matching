@@ -1,6 +1,7 @@
 import streamlit as st
 from helpers import process_uploaded_files, match_names, prepare_download
 import pandas as pd
+import urllib.parse
 
 def display_results(matched_data):
     st.write("Matching results:")
