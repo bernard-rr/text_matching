@@ -7,7 +7,14 @@ def display_results(matched_data):
     st.table(matched_data)
 
 def main():
-    st.title("Name Matching App")
+    st.title("Text Matching App")
+
+    st.markdown("[Read the instructions here](https://github.com/bernard-rr/text_matching#usage)")
+
+    email = "bernardchidi5@gmail.com"
+    subject = urllib.parse.quote("Feedback on the Text Matching App")
+    feedback_link = f"[Send me feedback](mailto:{email}?subject={subject})"
+    st.markdown(feedback_link)
     
     uploaded_file1 = st.file_uploader("Upload File 1 (CSV)", type=["csv"])
     uploaded_file2 = st.file_uploader("Upload File 2 (CSV)", type=["csv"])
